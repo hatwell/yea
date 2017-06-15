@@ -12,16 +12,9 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 import dj_database_url
 
-from os.path import abspath, basename, dirname, join, normpath
-
-# Replace BASE_DIR with this
-DJANGO_ROOT = dirname(dirname(abspath(__file__)))
-SITE_ROOT = dirname(DJANGO_ROOT)
-SITE_NAME = basename(DJANGO_ROOT)
-
-# # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,11 +39,6 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    # Pipeline
-    'pipeline',
-
-    # DRF
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +57,7 @@ ROOT_URLCONF = 'yea.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,52 +121,14 @@ ALLOWED_HOSTS = ['*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_ROOT = normpath(join(SITE_ROOT, 'static'))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = [
-    ()
+    os.path.join(PROJECT_ROOT, 'static'),
 ]
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
-)
-
-# browserify-specific
-PIPELINE_COMPILERS = (
-    'pipeline_browserify.compiler.BrowserifyCompiler',
-)
-
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
-
-if DEBUG:
-    PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify'
-
-PIPELINE_CSS = {
-    'mysite_css': {
-        'source_filenames': (
-            'css/style.css',
-        ),
-        'output_filename': 'css/mysite_css.css',
-    },
-}
-
-PIPELINE_JS = {
-    'mysite_js': {
-        'source_filenames': (
-            'js/bower_components/jquery/dist/jquery.min.js',
-            'js/bower_components/react/JSXTransformer.js',
-            'js/bower_components/react/react-with-addons.js',
-            'js/app.browserify.js',
-        ),
-        'output_filename': 'js/mysite_js.js',
-    }
-}
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
