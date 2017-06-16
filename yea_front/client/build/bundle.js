@@ -32627,7 +32627,10 @@ class BottomNavigationExampleSimple extends __WEBPACK_IMPORTED_MODULE_0_react__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PollCard__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_BottomNavigationExampleSimple__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PollCardsContainer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_BottomNavigationExampleSimple__ = __webpack_require__(379);
+
 
 
 
@@ -32639,8 +32642,8 @@ class MainContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_PollCard__["a" /* default */], null),
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_BottomNavigationExampleSimple__["a" /* default */], null)
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__["default"], null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_BottomNavigationExampleSimple__["a" /* default */], null)
     );
   }
 
@@ -32670,14 +32673,33 @@ class MainContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
 class PollCard extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
   render() {
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'p',
-      null,
-      'my card'
+      __WEBPACK_IMPORTED_MODULE_3_material_ui_Paper___default.a,
+      { zDepth: 1 },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { className: 'poll-title' },
+          this.props.title
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'poll-creator' },
+          this.props.user
+        )
+      )
     );
   }
 }
 
-/* harmony default export */ __webpack_exports__["a"] = (PollCard);
+/* unused harmony default export */ var _unused_webpack_default_export = (PollCard);
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed: SyntaxError: Unexpected token (9:4)\n\n\u001b[0m \u001b[90m  7 | \u001b[39m    \u001b[36mreturn\u001b[39m (\n \u001b[90m  8 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  9 | \u001b[39m    )\n \u001b[90m    | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 10 | \u001b[39m  }\n \u001b[90m 11 | \u001b[39m}\n \u001b[90m 12 | \u001b[39m\u001b[0m\n");
 
 /***/ })
 /******/ ]);

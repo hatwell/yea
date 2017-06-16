@@ -7,7 +7,13 @@ import Paper from 'material-ui/Paper';
 class PollCard extends React.Component {
   render() {
     return (
-      <p>my card</p>
+      <Paper zDepth={1} >
+        <div>
+          <h3 className="poll-title">{this.props.title}</h3>
+          <p className="poll-creator">{this.props.user}</p>
+        </div>
+      </Paper>
+
     )
   }
 }
