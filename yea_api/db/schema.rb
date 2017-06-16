@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616142242) do
+ActiveRecord::Schema.define(version: 20170616143829) do
 
   create_table "installs", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,10 +35,9 @@ ActiveRecord::Schema.define(version: 20170616142242) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "details"
-    t.datetime "date_created"
     t.boolean  "open"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "polls", ["user_id"], name: "index_polls_on_user_id"

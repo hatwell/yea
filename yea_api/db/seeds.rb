@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Poll.delete_all
+
+
+
+Poll.create({
+  title: "Where is good for lunch?",
+  details: "I need more lunch ideas!",
+  open: true,
+  user_id: 1
+  })
+
+  Response.create({
+    user_id: 1,
+    rating: 2,
+    visible:true,
+    poll_id: 4,
+    body: "let's go to wagamama!"   
+
+    })
