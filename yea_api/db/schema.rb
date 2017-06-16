@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616132925) do
+ActiveRecord::Schema.define(version: 20170616135232) do
 
   create_table "installs", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -36,8 +36,7 @@ ActiveRecord::Schema.define(version: 20170616132925) do
     t.string   "title"
     t.text     "details"
     t.datetime "date_created"
-    t.string   "open"
-    t.string   "boolean"
+    t.boolean  "open"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -55,18 +54,6 @@ ActiveRecord::Schema.define(version: 20170616132925) do
 
   add_index "responses", ["poll_id"], name: "index_responses_on_poll_id"
   add_index "responses", ["user_id"], name: "index_responses_on_user_id"
-
-  create_table "topics", force: :cascade do |t|
-    t.string   "title"
-    t.text     "details"
-    t.datetime "datestamp"
-    t.boolean  "open"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

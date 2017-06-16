@@ -5,8 +5,7 @@ class CreatePolls < ActiveRecord::Migration
       t.string :title
       t.text :details
       t.datetime :date_created
-      t.string :open
-      t.string :boolean
+      t.boolean :open
 
       t.timestamps null: false
     end

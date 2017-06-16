@@ -1,3 +1,0 @@
-class TopicsController < ApplicationController
-
-end
