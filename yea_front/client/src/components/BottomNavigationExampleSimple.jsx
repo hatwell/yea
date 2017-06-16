@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+
 
 const allPollsIcon = <FontIcon className="material-icons">list</FontIcon>;
 const addPollIcon = <FontIcon className="material-icons">add</FontIcon>;
@@ -19,8 +19,8 @@ class BottomNavigationExampleSimple extends Component {
 
   render() {
     return (
-      <Paper zDepth={2}>
-        <BottomNavigation >
+      <Paper className="footer" zDepth={1}>
+        <BottomNavigation  >
           <BottomNavigationItem
             label="all"
             icon={allPollsIcon}
