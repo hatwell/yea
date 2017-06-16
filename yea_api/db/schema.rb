@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615140418) do
+ActiveRecord::Schema.define(version: 20170616132925) do
 
   create_table "installs", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -31,13 +31,42 @@ ActiveRecord::Schema.define(version: 20170615140418) do
   add_index "installs", ["email"], name: "index_installs_on_email", unique: true
   add_index "installs", ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
 
-  create_table "products", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "price"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "polls", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "details"
+    t.datetime "date_created"
+    t.string   "open"
+    t.string   "boolean"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
+
+  add_index "polls", ["user_id"], name: "index_polls_on_user_id"
+
+  create_table "responses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "poll_id"
+    t.integer  "rating"
+    t.boolean  "visible"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "responses", ["poll_id"], name: "index_responses_on_poll_id"
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id"
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title"
+    t.text     "details"
+    t.datetime "datestamp"
+    t.boolean  "open"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
