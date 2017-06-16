@@ -10,7 +10,7 @@ class PollCard extends React.Component {
       <Paper zDepth={1} >
         <div>
           <h3 className="poll-title">{this.props.title}</h3>
-          <p className="poll-creator">{this.props.user}</p>
+          <p className="poll-creator">{this.props.details}</p>
         </div>
       </Paper>
 

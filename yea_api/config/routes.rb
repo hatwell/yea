@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
 
   scope path: 'api' do
-    resources :topics do
+    resources :polls do
       resources :responses
     end
   end

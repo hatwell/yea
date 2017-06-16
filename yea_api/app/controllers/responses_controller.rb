@@ -1,12 +1,12 @@
 class ResponsesController < ApplicationController
 
   def index
-    responses = response.all
+    responses = Response.all
     render :json => responses.to_json()
   end
 
   def create
-    response = response.create( response_params )
+    response = Response.create( response_params )
     render json: response, status: :created
   end
 

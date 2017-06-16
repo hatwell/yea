@@ -6,6 +6,7 @@ import BottomNavigationExampleSimple from '../components/BottomNavigationExample
 
 class MainContainer extends React.Component {
 
+
   render() {
     return (
       <div>

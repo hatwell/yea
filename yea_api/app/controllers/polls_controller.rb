@@ -1,12 +1,12 @@
 class PollsController < ApplicationController
 
     def index
-      polls = poll.all
+      polls = Poll.all
       render :json => polls.to_json()
     end
 
     def create
-      poll = poll.create( poll_params )
+      poll = Poll.create( poll_params )
       render json: poll, status: :created
     end
 

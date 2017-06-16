@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Poll.delete_all
+Response.delete_all
 
 
 
@@ -16,11 +17,18 @@ Poll.create({
   user_id: 1
   })
 
+Poll.create({
+  title: "Where shall we go to the pub?",
+  details: "Sick of Footlights",
+  open: true,
+  user_id: 1
+  })
+
   Response.create({
     user_id: 1,
     rating: 2,
     visible:true,
     poll_id: 4,
-    body: "let's go to wagamama!"   
+    body: "let's go to wagamama!"
 
     })

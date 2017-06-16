@@ -32628,7 +32628,6 @@ class BottomNavigationExampleSimple extends __WEBPACK_IMPORTED_MODULE_0_react__[
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PollCard__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__ = __webpack_require__(385);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__PollCardsContainer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_BottomNavigationExampleSimple__ = __webpack_require__(379);
 
 
@@ -32642,7 +32641,7 @@ class MainContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__["default"], null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_BottomNavigationExampleSimple__["a" /* default */], null)
     );
   }
@@ -32686,20 +32685,77 @@ class PollCard extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'p',
           { className: 'poll-creator' },
-          this.props.user
+          this.props.details
         )
       )
     );
   }
 }
 
-/* unused harmony default export */ var _unused_webpack_default_export = (PollCard);
+/* harmony default export */ __webpack_exports__["a"] = (PollCard);
 
 /***/ }),
 /* 385 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (9:4)\n\n\u001b[0m \u001b[90m  7 | \u001b[39m    \u001b[36mreturn\u001b[39m (\n \u001b[90m  8 | \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  9 | \u001b[39m    )\n \u001b[90m    | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 10 | \u001b[39m  }\n \u001b[90m 11 | \u001b[39m}\n \u001b[90m 12 | \u001b[39m\u001b[0m\n");
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_PollCard__ = __webpack_require__(384);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+
+
+class PollCardsContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+
+  constructor(props) {
+    super(props);
+    this.doSearch = this.doSearch.bind(this);
+    this.state = {
+      searchQuery: '',
+      polls: []
+    };
+  }
+
+  doSearch(event) {
+    this.setState({ searchQuery: event.target.value });
+  }
+
+  componentDidMount() {
+    var url = 'http://localhost:5000/api/polls';
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+
+    request.setRequestHeader('Content-Type', "application/json");
+    request.withCredentials = true;
+
+    request.onload = () => {
+      if (request.status === 200) {
+        console.log("request: ", request.responseText);
+        var data = JSON.parse(request.responseText);
+        this.setState({ polls: data });
+      } else {
+        console.log("Uh oh you're not logged in!");
+        this.props.history.goBack();
+      }
+    };
+    request.send(null);
+  }
+
+  render() {
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      { className: 'polls-container' },
+      this.state.polls.filter(poll => `${poll.title} ${poll.details} ${poll.user}`.toUpperCase().indexOf(this.state.searchQuery.toUpperCase()) >= 0).map(poll => (console.log(poll), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_PollCard__["a" /* default */], _extends({}, poll, { key: poll.id, onClick: this.props.handleClick }))))
+    );
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (PollCardsContainer);
 
 /***/ })
 /******/ ]);
