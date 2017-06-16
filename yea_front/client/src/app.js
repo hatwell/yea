@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import BottomNavigationExampleSimple from './components/BottomNavigationExampleSimple'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MyAwesomeReactComponent from './components/MyAwesomeReactComponent';
 
-const App = () => (
-  <MuiThemeProvider>
-    <MyAwesomeReactComponent />
-  </MuiThemeProvider>
-);
+class App extends React.Component {
+
+  render() {
+    return (
+    <MuiThemeProvider>
+      <BottomNavigationExampleSimple />
+    </MuiThemeProvider>
+  )
+    }
+
+}
 
 ReactDOM.render(
   <App />,
