@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616135232) do
+ActiveRecord::Schema.define(version: 20170616142242) do
 
   create_table "installs", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170616135232) do
     t.boolean  "visible"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "body"
   end
 
   add_index "responses", ["poll_id"], name: "index_responses_on_poll_id"
