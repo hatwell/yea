@@ -22,12 +22,12 @@ var url = 'http://localhost:5000/api/polls'
 var request = new XMLHttpRequest()
 request.open('GET', url)
 
-request.setRequestHeader('Content-Type', "application/json")
+request.setRequestHeader("Content-Type", "application/json")
 request.withCredentials = true
 
 request.onload = () => {
    if(request.status === 200){
-    console.log("request: ", request.responseText)
+    console.log("request: ", request)
     var data = JSON.parse(request.responseText)
     this.setState( { polls: data } )
    } else{
