@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PollCard from '../components/PollCard'
+import NewPollDialog from '../components/NewPollDialog'
 
 class PollCardsContainer extends React.Component {
 
@@ -43,6 +44,7 @@ request.send(null)
 
 
   <div className='polls-container'>
+
     {
       this.state.polls.filter((poll) => `${poll.title} ${poll.details} ${poll.user}`.toUpperCase().indexOf(this.state.searchQuery.toUpperCase()) >= 0)
        .map((poll) => (
@@ -51,6 +53,9 @@ request.send(null)
       ))
 
     }
+    <div>
+      <NewPollDialog />
+    </div>
   </div>
 
 
