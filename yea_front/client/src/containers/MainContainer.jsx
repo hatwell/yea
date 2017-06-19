@@ -13,7 +13,7 @@ class MainContainer extends React.Component {
     return (
       <div>
 
-          <LoginBox url="http://localhost:5000/" />
+          <LoginBox url="http://localhost:5000/" picUrl="http://graph.facebook.com/"/>
           <PollCardsContainer />
           <BottomNavigationExampleSimple />
       </div>

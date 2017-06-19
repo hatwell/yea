@@ -14255,7 +14255,7 @@ class MainContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compon
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
       null,
-      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__auth_LoginBox__["a" /* default */], { url: 'http://localhost:5000/' }),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__auth_LoginBox__["a" /* default */], { url: 'http://localhost:5000/', picUrl: 'http://graph.facebook.com/' }),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PollCardsContainer__["a" /* default */], null),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_BottomNavigationExampleSimple__["a" /* default */], null)
     );
@@ -14503,6 +14503,7 @@ class LoginBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
           ' Welcome ',
           this.state.currentUser.email
         ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.props.picUrl + this.state.currentUser.uid + "/picture?type=square" }),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__SignOut__["a" /* default */], { url: this.props.url + "users/sign_out", onSignOut: this.setUser })
       );
     }

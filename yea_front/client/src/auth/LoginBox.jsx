@@ -52,6 +52,7 @@ class LoginBox extends React.Component {
       if(this.state.currentUser){
         mainDiv = <div>
           <h4> Welcome {this.state.currentUser.email}</h4>
+          <img src= {this.props.picUrl + this.state.currentUser.uid + "/picture?type=square"} />
           <SignOut url={this.props.url + "users/sign_out"} onSignOut={this.setUser}></SignOut>
         </div>
       }
