@@ -12,10 +12,23 @@ class PollCardsContainer extends React.Component {
     searchQuery: '',
     polls: []
   }
+
+  this.addPoll = this.addPoll.bind(this)
+  this.handleClick = this.handleClick.bind(this)
 }
 
 doSearch(event){
   this.setState({searchQuery: event.target.value})
+}
+
+addPoll(poll){
+  let polls = this.state.polls.slice();
+  polls.push(poll)
+  this.setState({polls: polls});
+}
+
+handleClick(){
+  console.log("i have been clicked");
 }
 
 componentDidMount(){
@@ -28,7 +41,6 @@ request.withCredentials = true
 
 request.onload = () => {
    if(request.status === 200){
-    console.log("request: ", request)
     var data = JSON.parse(request.responseText)
     this.setState( { polls: data } )
    } else{
@@ -48,13 +60,12 @@ request.send(null)
     {
       this.state.polls.filter((poll) => `${poll.title} ${poll.details} ${poll.user}`.toUpperCase().indexOf(this.state.searchQuery.toUpperCase()) >= 0)
        .map((poll) => (
-         console.log(poll),
-        <PollCard { ...poll } key={poll.id} onClick={this.props.handleClick}/>
+        <PollCard { ...poll } key={poll.id} onClick={this.handleClick}/>
       ))
 
     }
     <div>
-      <NewPollDialog />
+      <NewPollDialog url="http://localhost:5000/api/polls" newPoll={this.addPoll} />
     </div>
   </div>
 
